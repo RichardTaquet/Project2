@@ -1,22 +1,19 @@
 package com.example.project.view;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
+import com.example.project.R;
 import com.example.project.Singletons;
 import com.example.project.controller.MainControlleur;
+import com.example.project.data.PokeRepository;
 import com.example.project.model.Pokemon;
-import com.example.project.R;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,16 +21,14 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
+    private PokeRepository pokeRepository;
     private MainControlleur controlleur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         controlleur=new MainControlleur(this,
-        Singletons.getGson(),
-        Singletons.getSharedPreferences(getApplicationContext()));
+        pokeRepository);
         controlleur.onStart();
 
 
