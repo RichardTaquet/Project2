@@ -34,6 +34,8 @@ public class MainControlleur {
         this.sharedPreferences = sharedPreferences;
     }
 
+
+
     public void onStart() {
         List<Pokemon> pokemonList = getDataFromCache();
         if (pokemonList != null) {
@@ -45,8 +47,8 @@ public class MainControlleur {
     }
 
 
-    public void onItemClick(Pokemon pokemon){
-
+    public  void onItemClick(Pokemon pokemon){
+        view.navigateToDetails(pokemon);
     }
 
     public void onButtonAClick(){

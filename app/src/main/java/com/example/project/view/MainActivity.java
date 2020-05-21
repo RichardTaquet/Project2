@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.project.Singletons;
@@ -14,7 +14,6 @@ import com.example.project.controller.MainControlleur;
 import com.example.project.model.Pokemon;
 import com.example.project.R;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private SharedPreferences sharedPreferences;
     private Gson gson;
+    private MainControlleur controlleur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainControlleur controlleur=new MainControlleur(this,
+        controlleur=new MainControlleur(this,
         Singletons.getGson(),
         Singletons.getSharedPreferences(getApplicationContext()));
         controlleur.onStart();
@@ -51,19 +51,22 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        //quand je supprime ces lignes ListAdapter marchent plus
-        final List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }// define an adapter
-
-
-        mAdapter = new ListAdapter(pokemonList);
+        mAdapter = new ListAdapter(pokemonList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Pokemon item) {
+                 controlleur.onItemClick(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
     }
 
 
     public void showError(){
         Toast.makeText(this,"API Error",Toast.LENGTH_SHORT).show();
+    }
+
+    public void navigateToDetails(Pokemon pokemon) {
+        Toast.makeText(this,"TODO navigate",Toast.LENGTH_SHORT).show();
+
     }
 }
