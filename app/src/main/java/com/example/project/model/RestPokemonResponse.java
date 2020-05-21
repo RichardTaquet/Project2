@@ -1,6 +1,6 @@
-package com.example.project.data;
+package com.example.project.model;
 
-import com.example.project.data.Pokemon;
+import com.example.project.model.Pokemon;
 
 import java.util.List;
 

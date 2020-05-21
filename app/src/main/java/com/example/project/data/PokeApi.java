@@ -1,6 +1,6 @@
-package com.example.project;
+package com.example.project.data;
 
-import com.example.project.data.RestPokemonResponse;
+import com.example.project.model.RestPokemonResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

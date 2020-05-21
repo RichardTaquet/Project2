@@ -1,4 +1,4 @@
-package com.example.project.data;
+package com.example.project.model;
 
 public class Pokemon {
     private String url;

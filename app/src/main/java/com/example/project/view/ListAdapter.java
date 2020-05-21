@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.project.data.Pokemon;
+import com.example.project.model.Pokemon;
 import com.example.project.R;
 
 import java.util.List;
