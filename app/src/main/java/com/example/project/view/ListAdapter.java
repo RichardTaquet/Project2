@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.project.data.Pokemon;
+import com.example.project.R;
 
 import java.util.List;
 
